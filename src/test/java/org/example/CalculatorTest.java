@@ -11,6 +11,16 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class CalculatorTest {
     private final Calculator calculator = new Calculator();
 
+    @BeforeAll
+    public static void beforeAll(){
+        System.out.println("Before All");
+    }
+
+    @AfterAll
+    public static void afterAll() {
+        System.out.println("After All");
+    }
+
     @BeforeEach
     public void setUp() {
         System.out.println("Before each");
