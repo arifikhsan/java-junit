@@ -2,6 +2,7 @@ package org.example;
 
 import org.example.generator.SimpleDisplayNameGenerator;
 import org.junit.jupiter.api.*;
+import org.opentest4j.TestAbortedException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -51,5 +52,16 @@ class CalculatorTest {
     @Disabled
     public void testComingSoon() {
         assertEquals(0, calculator.divide(4, 2));
+    }
+
+    @Test
+    public void testAborted() {
+        var profile = System.getenv("PROFILE");
+        System.out.println("Profile: " + profile);
+        if (!"DEV".equals(profile)) {
+            throw new TestAbortedException("Test dibatalkan karena bukan DEV");
+        }
+
+        // unit test untuk DEV
     }
 }
